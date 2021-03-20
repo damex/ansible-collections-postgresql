@@ -1,0 +1,14 @@
+---
+- name: "ensure postgresql users"
+  community.postgresql.postgresql_user:
+    name: "{{ postgresql_user.name | default(item) }}"
+    password: "{{ postgresql_user.password | default(omit) }}"
+    no_password_changes: "{{ postgresql_user.no_password_changes | default(postgresql_users_no_password_changes) }}"
+    encrypted: "{{ postgresql_user.encrypted | default(postgresql_users_password_encryption) }}"
+    state: "{{ postgresql_user.state | default(postgresql_users_state) }}"
+  no_log: true
+  become: true
+  become_user: "{{ postgresql_users_user }}"
+  loop: "{{ postgresql_users }}"
+  loop_control:
+    loop_var: "postgresql_user"
