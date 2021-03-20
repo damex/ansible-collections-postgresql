@@ -1,0 +1,10 @@
+---
+postgresql_databases: []
+postgresql_databases_state: "present"
+postgresql_databases_user: "postgres"
+postgresql_databases_owner: "{{ postgresql_databases_user }}"
+postgresql_databases_encoding: "UTF-8"
+postgresql_databases_lc_collate: "en_US.UTF-8"
+postgresql_databases_lc_ctype: "en_US.UTF-8"
+postgresql_databases_tablespace: "pg_default"
+postgresql_databases_template: "template0"
