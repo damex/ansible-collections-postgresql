@@ -1,6 +1,6 @@
 ---
 - name: "ensure pg_ident.conf"
-  template:
+  ansible.builtin.template:
     src: "pg_ident.conf.j2"
     dest: "{{ postgresql_ident_file }}"
     owner: "{{ postgresql_user }}"

@@ -1,6 +1,6 @@
 ---
 - name: "ensure postgresql packages"
-  include_role:
+  ansible.builtin.include_role:
     name: "damex.package"
   vars:
     package_packages:
