@@ -1,0 +1,19 @@
+---
+- name: "ensure postgresql"
+  block:
+    - name: "ensure postgresql prerequisites"
+      ansible.builtin.import_tasks: "prerequisites.yml"
+    - name: "ensure postgresql packages"
+      ansible.builtin.import_tasks: "packages.yml"
+    - name: "ensure postgresql directories"
+      ansible.builtin.import_tasks: "directories.yml"
+    - name: "ensure postgresql postgresql.conf"
+      ansible.builtin.import_tasks: "postgresql.conf.yml"
+    - name: "ensure postgresql pg_hba.conf"
+      ansible.builtin.import_tasks: "pg_hba.conf.yml"
+    - name: "ensure postgresql pg_ident.conf"
+      ansible.builtin.import_tasks: "pg_ident.conf.yml"
+    - name: "ensure postgresql systemd"
+      ansible.builtin.import_tasks: "systemd.yml"
+  tags:
+    - "postgresql"
