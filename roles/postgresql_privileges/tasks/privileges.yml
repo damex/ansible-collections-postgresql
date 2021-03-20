@@ -1,0 +1,17 @@
+---
+- name: "ensure postgresql privileges"
+  community.postgresql.postgresql_privs:
+    database: "{{ postgresql_privilege.database | default(item) }}"
+    roles: "{{ postgresql_privilege.roles }}"
+    grant_option: "{{ postgresql_privilege.grant_option | default(postgresql_privileges_grant_option) }}"
+    objs: "{{ postgresql_privilege.objs | default(omit) }}"
+    privs: "{{ postgresql_privilege.privs | default(omit) }}"
+    schema: "{{ postgresql_privilege.schema | default(omit) }}"
+    state: "{{ postgresql_privilege.state | default(postgresql_privileges_state) }}"
+    target_roles: "{{ postgresql_privilege.target_roles | default(omit) }}"
+    type: "{{ postgresql_privilege.type | default(omit) }}"
+  become: true
+  become_user: "{{ postgresql_privileges_user }}"
+  loop: "{{ postgresql_privileges }}"
+  loop_control:
+    loop_var: "postgresql_privilege"
