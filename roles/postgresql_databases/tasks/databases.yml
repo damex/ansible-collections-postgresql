@@ -1,0 +1,17 @@
+---
+- name: "ensure the postgresql database"
+  postgresql_db:
+    name: "{{ postgresql_database.name | default(item) }}"
+    owner: "{{ postgresql_database.owner | default(postgresql_databases_owner) }}"
+    encoding: "{{ postgresql_database.encoding | default(postgresql_databases_encoding) }}"
+    lc_collate: "{{ postgresql_database.lc_collate | default(postgresql_databases_lc_collate) }}"
+    lc_ctype: "{{ postgresql_database.lc_ctype | default(postgresql_databases_lc_ctype) }}"
+    template: "{{ postgresql_database.template | default(postgresql_databases_template) }}"
+    conn_limit: "{{ postgresql_database.conn_limit | default(omit) }}"
+    tablespace: "{{ postgresql_database.tablespace | default(postgresql_databases_tablespace) }}"
+    state: "{{ postgresql_database.state | default(postgresql_databases_state) }}"
+  become: true
+  become_user: "{{ postgresql_databases_user }}"
+  loop: "{{ postgresql_databases }}"
+  loop_control:
+    loop_var: "postgresql_database"
