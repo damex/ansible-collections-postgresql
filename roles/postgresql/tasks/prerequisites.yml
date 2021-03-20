@@ -1,6 +1,6 @@
 ---
 - name: "ensure postgresql ssl requirements"
-  fail:
+  ansible.builtin.fail:
     msg: >
       Please make sure that postgresql ssl variables are defined:
       - "postgresql_ssl_ca"

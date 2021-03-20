@@ -1,6 +1,6 @@
 ---
 - name: "ensure postgresql cluster directories"
-  file:
+  ansible.builtin.file:
     path: "{{ postgresql_cluster_directory }}"
     owner: "{{ postgresql_user }}"
     group: "{{ postgresql_group }}"
