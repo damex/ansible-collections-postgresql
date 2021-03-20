@@ -1,0 +1,6 @@
+---
+postgresql_users: []
+postgresql_users_user: "postgres"
+postgresql_users_no_password_changes: false
+postgresql_users_password_encryption: true
+postgresql_users_state: "present"
