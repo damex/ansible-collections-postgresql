@@ -1,0 +1,10 @@
+---
+- name: "ensure postgresql privileges"
+  block:
+    - name: "ensure postgresql is available"
+      ansible.builtin.import_tasks: "ping.yml"
+    - name: "ensure postgresql privileges"
+      ansible.builtin.import_tasks: "privileges.yml"
+  tags:
+    - "postgresql"
+    - "postgresql_privileges"

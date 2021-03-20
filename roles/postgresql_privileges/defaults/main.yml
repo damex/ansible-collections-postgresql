@@ -1,0 +1,5 @@
+---
+postgresql_privileges: []
+postgresql_privileges_user: "postgres"
+postgresql_privileges_grant_option: false
+postgresql_privileges_state: "present"
