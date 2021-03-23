@@ -1,0 +1,10 @@
+---
+- name: "ensure postgresql schemas"
+  block:
+    - name: "ensure postgresql is available"
+      ansible.builtin.import_tasks: "ping.yml"
+    - name: "ensure postgresql schemas"
+      ansible.builtin.import_tasks: "schemas.yml"
+  tags:
+    - "postgresql"
+    - "postgresql_schemas"

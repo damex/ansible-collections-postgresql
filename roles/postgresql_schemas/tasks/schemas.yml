@@ -1,0 +1,13 @@
+---
+- name: "ensure postgresql schemas"
+  community.postgresql.postgresql_schema:
+    name: "{{ postgresql_schema.name }}"
+    cascade_drop: "{{ postgresql_schema.cascade_drop | default(omit) }}"
+    database: "{{ postgresql_schema.database | default(omit) }}"
+    owner: "{{ postgresql_schema.owner | default(postgresql_schemas_owner) }}"
+    state: "{{ postgresql_schema.state | default(postgresql_schemas_state) }}"
+  become: true
+  become_user: "{{ postgresql_schemas_user }}"
+  loop: "{{ postgresql_schemas }}"
+  loop_control:
+    loop_var: "postgresql_schema"
