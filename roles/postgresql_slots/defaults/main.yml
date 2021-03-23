@@ -1,0 +1,7 @@
+---
+postgresql_slots: []
+postgresql_slots_user: "postgres"
+postgresql_slots_immediately_reserve: true
+postgresql_slots_slot_type: "physical"
+postgresql_slots_output_plugin: "pgoutput"
+postgresql_slots_state: "present"

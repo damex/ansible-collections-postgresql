@@ -1,0 +1,10 @@
+---
+- name: "ensure postgresql slots"
+  block:
+    - name: "ensure postgresql is available"
+      ansible.builtin.import_tasks: "ping.yml"
+    - name: "ensure postgresql slots"
+      ansible.builtin.import_tasks: "slots.yml"
+  tags:
+    - "postgresql"
+    - "postgresql_slots"
