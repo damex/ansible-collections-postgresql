@@ -1,9 +1,9 @@
 ---
 - name: "ensure postgresql packages"
   ansible.builtin.include_role:
-    name: "damex.package"
+    name: "damex.apt.apt_packages"
   vars:
-    package_packages:
+    apt_packages:
       - name: "{{ postgresql_package_name }}"
         version: "{{ postgresql_package_version }}"
         state: "{{ postgresql_package_state }}"
