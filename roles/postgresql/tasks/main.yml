@@ -3,6 +3,10 @@
   block:
     - name: "ensure postgresql prerequisites"
       ansible.builtin.import_tasks: "prerequisites.yml"
+    - name: "ensure postgresql environment"
+      ansible.builtin.import_tasks: "environment.yml"
+    - name: "ensure postgresql repository"
+      ansible.builtin.import_tasks: "repository.yml"
     - name: "ensure postgresql packages"
       ansible.builtin.import_tasks: "packages.yml"
     - name: "ensure postgresql directories"

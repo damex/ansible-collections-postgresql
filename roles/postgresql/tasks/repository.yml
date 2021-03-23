@@ -1,0 +1,17 @@
+---
+- name: "ensure postgresql repository key"
+  ansible.builtin.include_role:
+    name: "damex.apt.apt_keys"
+  vars:
+    apt_keys:
+      - id: "{{ postgresql_repository_key_id }}"
+        url: "{{ postgresql_repository_key_url }}"
+
+- name: "ensure postgresql repository"
+  ansible.builtin.include_role:
+    name: "damex.apt.apt_repositories"
+  vars:
+    apt_repositories:
+      - name: "postgresql"
+        url: "{{ postgresql_repository_url }}"
+        components: "{{ postgresql_repository_components }}"

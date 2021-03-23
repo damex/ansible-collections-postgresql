@@ -2,10 +2,16 @@
 postgresql_version: 11
 postgresql_user: "postgres"
 postgresql_group: "postgres"
-postgresql_package_name: "postgresql"
+postgresql_repository_key_id: "7FCC7D46ACCC4CF8"
+postgresql_repository_key_url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
+postgresql_repository_url: "http://apt.postgresql.org/pub/repos/apt"
+postgresql_repository_components:
+  - "{{ ansible_distribution_release }}-pgdg"
+  - "main"
+postgresql_package_name: "postgresql-{{ postgresql_version }}"
 postgresql_package_version: ""
 postgresql_package_state: "present"
-postgresql_contrib_package_name: "postgresql-contrib"
+postgresql_contrib_package_name: "postgresql-contrib-{{ postgresql_version }}"
 postgresql_contrib_package_version: ""
 postgresql_contrib_package_state: "present"
 postgresql_psycopg2_package_name: "python3-psycopg2"
@@ -331,7 +337,7 @@ postgresql_autovacuum_vacuum_cost_limit: -1
 # Client Connection Defaults (Statement Behavior)
 postgresql_client_min_messages: "NOTICE"
 postgresql_search_path:
-  - "'$user'"
+  - "$user"
   - "public"
 postgresql_row_security: true
 postgresql_default_tablespace: ""
