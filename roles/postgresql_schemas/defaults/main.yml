@@ -1,0 +1,5 @@
+---
+postgresql_schemas: []
+postgresql_schemas_user: "postgres"
+postgresql_schemas_owner: "{{ postgresql_schemas_user }}"
+postgresql_schemas_state: "present"
