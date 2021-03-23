@@ -1,0 +1,14 @@
+---
+- name: "ensure postgresql slots"
+  postgresql_slot:
+    name: "{{ postgresql_slot.name | mandatory }}"
+    db: "{{ postgresql_slot.db | default(omit) }}"
+    immediately_reserve: "{{ postgresql_slot.immediately_reserve | default(postgresql_slots_immediately_reserve) }}"
+    slot_type: "{{ postgresql_slot.slot_type | default(postgresql_slots_slot_type) }}"
+    output_plugin: "{{ postgresql_slot.output_plugin | default(postgresql_slots_output_plugin) }}"
+    state: "{{ postgresql_slot.state | default(postgresql_slots_state) }}"
+  become: true
+  become_user: "{{ postgresql_slots_user }}"
+  loop: "{{ postgresql_slots }}"
+  loop_control:
+    loop_var: "postgresql_slot"
